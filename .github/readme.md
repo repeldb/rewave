@@ -13,7 +13,7 @@
 
 
 
-Socket-based response-request style binary protocol that handles the communication between the client and the Repel Db instance through a regular TCP connection.
+Socket-based, response-request style binary protocol that handles the communication between the client and **repelDB** instance through a regular TCP connection.
 
 ## Rewave Protocol
 Rewave uses binary format JSON object. 

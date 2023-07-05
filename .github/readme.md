@@ -13,7 +13,13 @@
 
 
 
-Response-request style binary protocol that handle the communication between the client and the Repel Db instance through a regular TCP connection.
+Socket-based response-request style binary protocol that handles the communication between the client and the Repel Db instance through a regular TCP connection.
+
+## Rewave Protocol
+Rewave uses binary format JSON object. 
+
+## Rewave Request Format
+Each request has specific format
 
 ## License
 Rewave is license under [GPL v3 (GNU General Public License)](../LICENSE)

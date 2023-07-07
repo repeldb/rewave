@@ -1,0 +1,13 @@
+[package]
+name = "rewave"
+version = "0.0.1-beta"
+edition = "2021"
+description = "Request-response binary style protocol over TCP"
+authors = ["riyuzenn <riyuzenn@gmail.com>"]
+
+[dependencies]
+argon2 = "0.5.0"
+async-trait = "0.1.70"
+serde = { version = "1.0.166", features = ["derive"] }
+serde_json = "1.0.100"
+tokio = { version = "1.29.1", features = ["full"] }

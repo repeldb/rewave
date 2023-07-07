@@ -1,3 +1,5 @@
+> **Warning**: Still in the early stages of development. **Not yet ready** for production
+
 <table style="width: 100%; border: none;" cellspacing="0" cellpadding="0" border="0">
   <tr>
     <td></td>
@@ -11,8 +13,11 @@
   </tr>
 </table>
 
-
-Socket-based, response-request style binary protocol that handles the communication between the client and **repelDB** instance through a regular TCP connection.
+<!--
+| ⚠️        Still in the early stages of development. Not yet ready for production  |
+|-----------------------------------------|
+-->
+Socket-based, response-request style binary protocol handles communication between the client and **repelDB** instance through a regular TCP connection.
 
 ## Rewave Protocol
 Rewave uses binary format JSON object. 

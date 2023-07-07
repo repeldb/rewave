@@ -1,4 +1,8 @@
-use serde::{Serialize, Deserialize, de::DeserializeOwned};
+use serde::{
+    de::DeserializeOwned,
+    Deserialize,
+    Serialize,
+};
 use serde_json;
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -33,7 +37,7 @@ pub enum RequestType {
 pub struct RequestHeader {
     pub auth: Option<String>,
     #[serde(rename = "type")]
-    pub _type: RequestType
+    pub _type: RequestType,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -45,14 +49,14 @@ pub enum Status {
     AlreadyExists,
     InvalidBody,
     SyntaxError,
-    InternalError
+    InternalError,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct ResponseHeader {
     pub status: Status,
     pub message: Option<String>,
-    pub error: bool
+    pub error: bool,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -64,7 +68,7 @@ pub struct ResponseError {
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Request {
     pub body: Option<RequestBody>,
-    pub header: RequestHeader
+    pub header: RequestHeader,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
@@ -77,22 +81,20 @@ pub fn process_req(buf: &[u8]) -> Result<Request, Response> {
     if let Some(req) = deserialize::<Request>(buf) {
         Ok(req)
     } else {
-        
         Err(Response {
             body: None,
-            header: ResponseHeader { 
-                status: Status::InvalidBody, 
-                message: Some(String::from("Invalid request format")), 
-                error: true 
-            }
+            header: ResponseHeader {
+                status: Status::InvalidBody,
+                message: Some(String::from("Invalid request format")),
+                error: true,
+            },
         })
-        
     }
 }
 
 pub fn deserialize<V>(data: &[u8]) -> Option<V>
-where 
-    V: DeserializeOwned, 
+where
+    V: DeserializeOwned,
 {
     match serde_json::from_str(std::str::from_utf8(data).unwrap()) {
         Ok(val) => Some(val),
@@ -100,13 +102,12 @@ where
     }
 }
 
-
 pub fn serialize<V>(data: &V) -> Result<Vec<u8>, String>
 where
     V: Serialize,
 {
     match serde_json::to_string(data) {
         Ok(data) => Ok(data.into_bytes()),
-        Err(err) => Err(err.to_string())
+        Err(err) => Err(err.to_string()),
     }
 }

@@ -23,8 +23,10 @@ Socket-based, response-request style binary protocol handles communication betwe
 Rewave uses binary format JSON object. 
 
 ## Rewave Request Format
-Each request has specific format
+Each request has a specific format
 
+## Features
+* [x] Request-response style API
 
 ## Planned
 * [ ] User authentication

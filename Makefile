@@ -33,6 +33,7 @@ lint:
 
 format:
 	@cargo fmt
+	@echo "Code formatted successfully"
 
 doc:
 	@cargo doc --target-dir docs

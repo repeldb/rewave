@@ -38,5 +38,5 @@ doc:
 	@cargo doc --target-dir docs
 
 copyright: 
-	@find . -iname "*.rs" -exec bash -c "if ! grep -q Copyright "{}"; then cat copyright {} > {}.new && mv {}.new {} ; fi" \; 
+	@find . -iname "*.rs" -exec bash -c "if ! grep -q Copyright "{}"; then cat COPYRIGHT {} > {}.new && mv {}.new {} ; fi" \; 
 	@echo "Copyright notice added"

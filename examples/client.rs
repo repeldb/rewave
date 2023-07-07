@@ -1,17 +1,27 @@
 extern crate rewave;
-use std::{
-    net::{TcpStream, Shutdown}, 
-    io::{Write, Read, self}
-};
-use rewave::{data::*, buffer::BUFFER};
 
+use rewave::{
+    buffer::BUFFER,
+    data::*,
+};
+use std::{
+    io::{
+        self,
+        Read,
+        Write,
+    },
+    net::{
+        Shutdown,
+        TcpStream,
+    },
+};
 
 fn _read_stream(
-    mut stream: TcpStream, 
-    buff: &mut [u8]
+    mut stream: TcpStream,
+    buff: &mut [u8],
 ) -> io::Result<Vec<u8>> {
     let mut data = Vec::new();
-    
+
     while let Ok(size) = stream.read(buff) {
         if size == 0 {
             stream.shutdown(Shutdown::Both).ok();
@@ -35,19 +45,19 @@ fn main() {
         Ok(mut _stream) => {
             let body = Request {
                 body: None,
-                header: RequestHeader { auth: None, _type: RequestType::Auth }
+                header: RequestHeader {
+                    auth: None,
+                    _type: RequestType::Auth,
+                },
             };
             let data = serialize::<Request>(&body).unwrap();
             let _ = _stream.write(&data);
-            
+
             if let Ok(raw) = _read_stream(_stream, &mut buff) {
-                let res = deserialize::<Response>(&raw)
-                    .unwrap();
+                let res = deserialize::<Response>(&raw).unwrap();
                 println!("{:?}", res);
             }
-             
-
-        },
+        }
         Err(e) => {
             println!("Failed to connect : {}", e);
         }

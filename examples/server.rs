@@ -1,21 +1,39 @@
 extern crate rewave;
 
-use std::net::SocketAddr;
 use async_trait::async_trait;
-use tokio;
-use rewave::wave::*;
 use rewave::data::*;
+use rewave::wave::*;
+use std::net::SocketAddr;
+use tokio;
 
 struct RepelServer {}
 
 #[async_trait]
 impl Rewave for RepelServer {
-    async fn request(&self, request: Request) -> Result<Response, ResponseError> {
+    async fn request(
+        &self,
+        request: Request,
+    ) -> Result<Response, ResponseError> {
         println!("New request : {:?}", request);
-        Ok(Response { body: Some(Vec::new()), header: ResponseHeader { status: Status::Ok, message: Some("hello world".to_string()), error: false } }) 
+        Ok(Response {
+            body: Some(Vec::new()),
+            header: ResponseHeader {
+                status: Status::Ok,
+                message: Some("hello world".to_string()),
+                error: false,
+            },
+        })
     }
-    async fn on_connect(&self, username: Option<&str>, addr: SocketAddr) {
-       println!("New connection: {}:{}", addr.ip(), addr.port()) 
+    async fn on_connect(
+        &self,
+        username: Option<&str>,
+        addr: SocketAddr,
+    ) {
+        println!(
+            "New connection: {}:{}",
+            addr.ip(),
+            addr.port()
+        )
     }
 }
 

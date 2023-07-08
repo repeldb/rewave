@@ -12,10 +12,10 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 extern crate rewave;
 
@@ -61,11 +61,11 @@ async fn main() {
     let repel = RepelServer {};
     let rwh = RewaveHandler::new(repel);
     let server = RewaveServer::new(
-        rwh, 
-        RewaveServerConfig { 
-            auth: true, 
-            addr: Some("127.0.0.1:2079") 
-        }
+        rwh,
+        RewaveServerConfig {
+            auth: true,
+            addr: Some("127.0.0.1:2079"),
+        },
     );
     server.serve().await;
 }

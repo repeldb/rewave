@@ -29,6 +29,7 @@ Each request has a specific format
 
 ## Features
 * [x] Request-response style API
+* [x] Asynchronous TCP listener
 
 ## Planned
 * [ ] User authentication

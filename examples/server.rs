@@ -60,6 +60,12 @@ impl Rewave for RepelServer {
 async fn main() {
     let repel = RepelServer {};
     let rwh = RewaveHandler::new(repel);
-    let server = RewaveServer::new(rwh, true);
-    server.serve("127.0.0.1:2000").await;
+    let server = RewaveServer::new(
+        rwh, 
+        RewaveServerConfig { 
+            auth: true, 
+            addr: Some("127.0.0.1:2079") 
+        }
+    );
+    server.serve().await;
 }

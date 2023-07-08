@@ -82,9 +82,15 @@ impl<T: Rewave> Clone for Inner<T> {
     }
 }
 
+#[derive(Debug, Clone)]
+pub struct RewaveServerConfig {
+    pub auth: bool,
+    pub addr: Option<&'static str>,
+}
+
 pub struct RewaveServer<T: Rewave> {
     rwh: RewaveHandler<T>,
-    auth: bool,
+    config: RewaveServerConfig,
 }
 
 impl<T: Rewave> RewaveHandler<T> {
@@ -97,23 +103,27 @@ impl<T: Rewave> RewaveHandler<T> {
 impl<T: Rewave> RewaveServer<T> {
     pub fn new(
         rwh: RewaveHandler<T>,
-        auth: bool,
+        config: RewaveServerConfig,
     ) -> Self {
-        Self { rwh, auth }
+        Self { rwh, config}
     }
 
     /// Run and serve Rewave Server
-    pub async fn serve<V: ToSocketAddrs>(
-        &self,
-        addr: V,
-    ) {
+    pub async fn serve(&self) {
+
+        let addr = self.config.addr
+            .or(Some("0.0.0.0:2079"))
+            .unwrap();
+
         let listener = TcpListener::bind(addr).await.unwrap();
 
         loop {
             let (stream, addr) = listener.accept().await.unwrap();
 
             let rwh = self.rwh.clone();
-            let mut buff = vec![0; 1024];
+            let config = self.config.clone();
+
+            let mut _buff = vec![0; 1024];
             tokio::spawn(async move {
                 let username = "test";
                 rwh._inner

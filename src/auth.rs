@@ -35,6 +35,12 @@ pub enum UserPermissionError {
     InvalidPermission,
 }
 
+#[derive(Serialize, Deserialize, Clone, Debug)]
+pub struct User {
+    pub username: String,
+    pub perm: UserPermission
+}
+
 impl UserPermission {
     pub fn from_str(s: &str) -> Result<UserPermission, UserPermissionError> {
         match s.to_lowercase().as_str() {

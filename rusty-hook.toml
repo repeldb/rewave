@@ -1,5 +1,5 @@
 [hooks]
-pre-commit = "cargo test"
+pre-commit = "cargo test && make format"
 pre-push = "cargo fmt"
 post-commit = "echo All changes were committed"
 post-push = "echo All commits were pushed"

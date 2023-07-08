@@ -12,10 +12,10 @@
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 use crate::buffer::{
     read_stream,
@@ -105,15 +105,12 @@ impl<T: Rewave> RewaveServer<T> {
         rwh: RewaveHandler<T>,
         config: RewaveServerConfig,
     ) -> Self {
-        Self { rwh, config}
+        Self { rwh, config }
     }
 
     /// Run and serve Rewave Server
     pub async fn serve(&self) {
-
-        let addr = self.config.addr
-            .or(Some("0.0.0.0:2079"))
-            .unwrap();
+        let addr = self.config.addr.or(Some("0.0.0.0:2079")).unwrap();
 
         let listener = TcpListener::bind(addr).await.unwrap();
 

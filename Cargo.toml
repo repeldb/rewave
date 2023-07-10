@@ -8,6 +8,7 @@ authors = ["riyuzenn <riyuzenn@gmail.com>"]
 [dependencies]
 argon2 = "0.5.0"
 async-trait = "0.1.70"
+rustls = "0.21.3"
 scram-rs = { version = "0.8.1", features = ["use_ring"] }
 serde = { version = "1.0.166", features = ["derive"] }
 serde_json = "1.0.100"

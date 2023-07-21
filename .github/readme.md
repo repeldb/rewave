@@ -34,6 +34,7 @@ Each request has a specific format
 ## Planned
 * [ ] User authentication
 * [ ] TLS support
+* [ ] Broadcasting for realtime communication
 * [ ] Distributed server
 
 <!--

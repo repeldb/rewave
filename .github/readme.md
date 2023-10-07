@@ -12,12 +12,12 @@
   </tr>
 </table>
 
-<!--
+
 | ⚠️        Still in the early stages of development. Not yet ready for production  |
 |-----------------------------------------|
--->
-
+<!--
 > **Warning**: Still in the early stages of development. **Not yet ready** for production
+-->
 
 Socket-based, response-request style binary protocol handles communication between the client and **repelDB** instance through a regular TCP connection.
 

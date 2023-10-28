@@ -3,7 +3,7 @@ name = "rewave"
 version = "0.0.1-beta"
 edition = "2021"
 description = "Request-response binary style protocol over TCP"
-authors = ["riyuzenn <riyuzenn@gmail.com>"]
+authors = ["riyuzenn <riyuzenn@pm.me>"]
 
 [dependencies]
 argon2 = "0.5.0"
